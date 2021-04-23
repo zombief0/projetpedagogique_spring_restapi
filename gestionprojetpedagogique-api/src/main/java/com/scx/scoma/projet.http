@@ -1,0 +1,772 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+#test Classe
+GET {{host-url}}//classe/byId/1
+
+###
+
+POST {{host-url}}//classe
+Content-Type: application/json
+
+{
+  "scxLibelle": "Terminale",
+   "scxIdCycle": 2
+}
+
+###
+
+PUT {{host-url}}//classe//2
+Content-Type: application/json
+
+{
+   "scxLibelle": "Premiere"
+}
+
+###
+
+DELETE {{host-url}}//classe//2
+
+###
+
+
+#Test de l'entité enseignant
+
+POST {{host-url}}//enseignant
+Content-Type: application/json
+
+{
+  "scxNom": "Kouppo",
+  "scxPrenom": "Didier",
+  "scxEmail" : "Kouppod@gmail.com",
+  "scxDateNaissance": "1985-08-19",
+  "scxTelephone": 650213414,
+  "scxSexe": "MASCULIN"
+}
+
+###
+
+GET {{host-url}}//enseignant//byId/2
+
+###
+
+PUT {{host-url}}//enseignant//2
+Content-Type: application/json
+
+{
+  "scxNom": "KOUAMOU",
+  "scxPrenom": "Gerges",
+  "scxEmail" : "kgeorges@gmail.com",
+  "scxDateNaissance": "1971-06-12",
+  "scxTelephone": 695412436,
+  "scxSexe": "FEMININ"
+}
+
+###
+
+DELETE {{host-url}}//enseignant/3
+
+###
+
+#Test de specialité
+
+POST {{host-url}}//specialite
+Content-Type: application/json
+
+{
+  "scxLibelle": "Allemand",
+  "scxDescription": "Notre première spécialité"
+}
+
+###
+
+GET {{host-url}}//specialite//byId//2
+
+###
+
+#Test de série
+POST {{host-url}}//serie
+Content-Type: application/json
+
+{
+  "scxLibelle": "A",
+  "scxDescription": "La première serie scientifique littéraire de l'application"
+}
+
+###
+
+PUT {{host-url}}//serie//1
+Content-Type: application/json
+
+{
+  "scxLibelle": "D",
+  "scxDescription": "La prems serie scientifique de l'application"
+}
+
+###
+
+GET {{host-url}}//serie//byId//2
+
+###
+
+DELETE {{host-url}}//serie//2
+
+###
+
+#Test de année académique
+
+POST {{host-url}}//annee
+Content-Type: application/json
+
+{
+  "scxDateDebut": "2017-09-07",
+  "scxDateFin": "2018-05-29"
+}
+
+###
+
+PUT {{host-url}}//annee//1
+Content-Type: application/json
+
+{
+  "scxDateDebut": "2012-09-12",
+  "scxDateFin": "2013-05-30"
+}
+
+###
+
+GET {{host-url}}//annee//byId//1
+
+###
+
+GET {{host-url}}//annee//all
+
+###
+
+DELETE {{host-url}}//annee//2
+
+###
+
+#Test de Absence
+
+POST {{host-url}}//absence
+Content-Type: application/json
+
+{
+  "scxDate": "2018-10-15",
+  "nombreHeures": 2,
+  "scxIdEnseignant": 1,
+  "scxIdAnneeAcademique":2
+}
+
+###
+
+GET {{host-url}}//absence//byId//1
+
+###
+
+GET {{host-url}}//absence//byEnseignant//2
+
+###
+
+GET {{host-url}}//absence//byAnnee//2
+
+###
+
+GET {{host-url}}//absence//byAnneeEnseignant//1//1
+
+###
+
+PUT {{host-url}}//absence//1
+Content-Type: application/json
+
+{
+  "scxDate": "2018-10-19",
+  "scxNombreHeures": 1,
+  "scxIdEnseignant": 1,
+  "scxIdAnneeAcademique":2
+}
+
+###
+
+DELETE {{host-url}}//absence//2
+
+###
+
+#Test de ecart
+POST {{host-url}}//ecart
+Content-Type: application/json
+
+{
+  "scxDate": "2018-08-12",
+  "scxDescription": "le professeur joue de la musique en salle",
+  "scxLibelle": "pertube la salle",
+  "scxIdEnseignant": 2,
+  "scxIdAnneeAcademique": 2
+}
+
+###
+PUT {{host-url}}//ecart//15
+Content-Type: application/json
+
+{
+  "scxDate": "2018-10-13",
+  "scxDescription": "a couché avec l'élève NIPS",
+  "scxLibelle": "Rapport sexuel avec une élève",
+  "scxIdEnseignant": 2,
+  "scxIdAnneeAcademique": 1
+}
+
+###
+
+DELETE {{host-url}}//ecart//16
+
+###
+
+GET {{host-url}}//ecart//byId//15
+
+###
+
+GET {{host-url}}//ecart//byEnseignant//2
+
+###
+
+GET {{host-url}}//ecart//byAnnee//2
+
+###
+
+GET {{host-url}}//ecart/byAnneeEnseignant//2//1
+
+###
+
+#Test de matière
+
+POST {{host-url}}//matiere
+Content-Type: application/json
+
+{
+  "scxDescription": "Les cours d'anglais du lycée",
+  "scxLibelle": "Anglais"
+}
+
+###
+
+PUT {{host-url}}//matiere//2
+Content-Type: application/json
+
+{
+  "scxDescription": "Les cours de physiques du lycée",
+  "scxLibelle": "Physique"
+}
+
+###
+
+GET {{host-url}}//matiere//byId//1
+
+###
+
+DELETE {{host-url}}//matiere//2
+
+###
+
+#Test de l'entité Cours
+
+POST {{host-url}}//cours
+Content-Type: application/json
+
+{
+  "scxLibelle": "Les cours de mathématiques de premiere C",
+  "scxDescription": "les bases pour la fac",
+  "scxCoefficient": 5,
+  "scxNature": "OBLIGATOIRE",
+  "scxIdMatiere": 1
+}
+
+###
+
+PUT {{host-url}}//cours//5
+Content-Type: application/json
+
+{
+  "scxLibelle": "Les cours d'anglais de quatrième",
+  "scxDescription": "les bases pour faire avancer les jeunes",
+  "scxCoefficient": 2,
+  "scxNature": "OBLIGATOIRE",
+  "scxIdMatiere": 3
+}
+
+###
+
+DELETE {{host-url}}//cours//5
+
+###
+
+GET {{host-url}}//cours//byGroupe//2
+
+###
+
+GET {{host-url}}//cours//byId//2
+
+###
+#Test de l'entité Salle
+
+POST {{host-url}}//salle
+Content-Type: application/json
+
+{
+  "scxLibelle": "6",
+  "scxDescription": "Première lle de Première",
+  "scxIdClasse": 3
+}
+
+###
+
+PUT {{host-url}}//salle//6
+Content-Type: application/json
+
+{
+
+  "scxLibelle": "2",
+  "scxDescription": "Deuxième salle de Première",
+  "scxIdClasse": 2,
+  "scxIdSpecialite": -1,
+  "scxIdSerie": 2
+}
+
+###
+
+GET {{host-url}}//salle//byId//5
+
+###
+
+GET {{host-url}}//salle//byClasse//1
+
+###
+
+#Test de l'entité Projet pédagogique
+
+POST {{host-url}}//projet
+Content-Type: application/json
+
+{
+  "scxDescription": "Projet pedagogique de mathématiques première C",
+  "scxStatut":"ATTENTE",
+  "scxIdCours": 6,
+  "scxIdAnneeAcademique": 1,
+  "scxDateCreation": "2017-09-01",
+  "scxDateModification": "2017-09-01"
+}
+
+###
+
+PUT {{host-url}}//projet//2
+Content-Type: application/json
+
+{
+  "scxDescription": "Proje pedagogique de mathématiques cinquième",
+  "scxStatut":"VALIDE",
+  "scxIdCours": 2,
+  "scxIdAnneeAcademique": 2,
+  "scxDateCreation": "2017-09-11",
+  "scxDateModification": "2017-09-13"
+}
+
+###
+
+GET {{host-url}}//projet//byId//1
+
+###
+
+GET {{host-url}}//projet//byAnnee//2
+
+###
+
+GET {{host-url}}//projet//byCours//2
+
+###
+
+GET {{host-url}}//projet//byAnneeCours//2//1
+
+###
+
+DELETE {{host-url}}//projet//7
+
+###
+
+# Test de Suivi projet
+
+POST {{host-url}}//suivi
+Content-Type: application/json
+
+{
+  "scxProgression": 20,
+  "scxIdProjetPedagogique":3,
+  "scxIdSalle": 2
+}
+
+###
+
+DELETE {{host-url}}//suivi//4
+
+###
+
+GET {{host-url}}//suivi//bySalle//3
+
+###
+
+GET {{host-url}}//suivi//byProjet//3
+
+###
+
+PUT {{host-url}}//suivi//2
+Content-Type: application/json
+
+{
+  "scxProgression": 50,
+  "scxIdProjetPedagogique":3,
+  "scxIdSalle": 4
+}
+
+###
+
+# test trimestre
+
+POST {{host-url}}//trimestre
+Content-Type: application/json
+
+{
+ "scxDateDebut":"2016-03-10",
+  "scxDateFin": "2016-05-25",
+  "scxStatut": "NON_TERMINE",
+  "scxProgression": 0,
+  "scxNumero": 1,
+  "scxIdSuiviProjetPedagogique": 18
+}
+
+###
+
+PUT {{host-url}}//trimestre//2
+Content-Type: application/json
+
+{
+ "scxDateDebut":"2016-01-07",
+  "scxDateFin": "2016-03-05",
+  "scxStatut": "NON_TERMINE",
+  "scxProgression": 0,
+  "scxNumero": 2,
+  "scxIdSuiviProjetPedagogique": 2
+}
+
+###
+
+DELETE {{host-url}}//trimestre//4
+
+###
+
+GET {{host-url}}//trimestre//byId//1
+
+###
+
+GET {{host-url}}//trimestre//bySuivi//2
+
+###
+
+#Test de l'entité Module
+
+POST {{host-url}}//module
+Content-Type: application/json
+
+{
+  "scxStatut": "NON_TERMINE",
+  "scxDescription": "Troisième module de maths dans lequel on verra....",
+  "scxProgression": 0,
+  "scxIdTrimestre": 2,
+  "scxLibelle": "Troisième module de maths",
+  "scxNumero": 1
+}
+###
+
+PUT {{host-url}}//module
+Content-Type: application/json
+
+{
+  "scxIdModule": 1,
+  "scxStatut": "NON_TERMINE",
+  "scxDescription": "Troisième module de maths dans lequel on verra....",
+  "scxProgression": 0,
+  "scxIdSequence": 5,
+  "scxLibelle": "Troisième module de maths",
+  "scxNumero": 1
+}
+
+###
+
+DELETE {{host-url}}//module//14
+
+###
+
+GET {{host-url}}//module//byId//1
+
+###
+
+GET {{host-url}}//module//bySequence//2
+
+###
+
+# Test de l'entité Sequence
+
+POST {{host-url}}//sequence
+Content-Type: application/json
+
+{
+  "scxDateDebut": "2016-04-02",
+  "scxDateFin": "2016-05-25",
+  "scxStatut": "NON_TERMINE",
+  "scxProgression": 0,
+  "scxIdTrimestre": 16,
+  "scxNumero":7
+}
+
+###
+
+PUT {{host-url}}//sequence//1
+Content-Type: application/json
+
+{
+  "scxDateDebut": "2015-09-07",
+  "scxDateFin": "2015-10-07",
+  "scxStatut": "NON_TERMINE",
+  "scxProgression": 0,
+  "scxIdTrimestre": 1,
+  "scxNumero": 1
+}
+
+###
+
+GET {{host-url}}//sequence//byId//1
+
+###
+
+GET {{host-url}}//sequence//byTrimestre//3
+
+###
+
+DELETE {{host-url}}//sequence//18
+
+###
+
+
+##
+#Test de l'entité Chapitre
+
+POST {{host-url}}//chapitre
+Content-Type: application/json
+
+{
+  "scxStatut": "NON_TERMINE",
+  "scxDescription": "Deuxième chapitre du premier module de maths dans lequel on verra....",
+  "scxProgression": 0,
+  "scxIdModule": 1,
+  "scxLibelle": "Deuxième chapitre de maths",
+  "scxNumero": 2
+}
+
+###
+
+PUT {{host-url}}//chapitre//1
+Content-Type: application/json
+
+{
+  "scxStatut": "NON_TERMINE",
+  "scxDescription": "Premier chapitre du premier module de maths dans lequel on verra....",
+  "scxProgression": 0,
+  "scxIdModule": 1,
+  "scxLibelle": "Premier chapitre de maths"
+}
+
+###
+
+DELETE {{host-url}}//chapitre//4
+
+###
+
+GET {{host-url}}//chapitre//byId//1
+
+###
+
+GET {{host-url}}//chapitre//byModule//1
+
+###
+#Test de l'entité Competence
+
+POST {{host-url}}//competence
+Content-Type: application/json
+
+{
+ "scxLibelle": "la deuxième compétence",
+  "scxIdChapitre": 1
+}
+
+###
+
+PUT {{host-url}}//competence//4
+Content-Type: application/json
+
+{
+  "scxLibelle": "la première compétence",
+  "scxIdChapitre": 1
+}
+
+###
+
+DELETE {{host-url}}//competence//4
+
+###
+
+GET {{host-url}}//competence//byId//1
+
+###
+
+GET {{host-url}}//competence//byChapitre//1
+
+###
+
+#Test de l'entité Activite
+POST {{host-url}}//activite
+Content-Type: application/json
+
+{
+ "scxStatut": "TERMINE",
+  "scxDescription": "la première leçon pratique de maths",
+  "scxIdChapitre": 1,
+  "scxLibelle": "Leçon 3 de maths",
+  "scxType": "TRAVAUX_PRATIQUES",
+  "scxNumero": 3
+}
+
+###
+
+PUT {{host-url}}//activite//3
+Content-Type: application/json
+
+{
+  "scxStatut": "TERMINE",
+  "scxDescription": "la premiere leçon pratique de maths",
+  "scxIdChapitre": 1,
+  "scxLibelle": "Leçon 2 de maths",
+  "scxType": "TRAVAUX_PRATIQUES"
+}
+
+###
+
+DELETE {{host-url}}//activite//3
+
+###
+
+GET {{host-url}}//activite//byId//1
+
+###
+
+GET {{host-url}}//activite//byChapitre//1
+
+###
+
+#Test de l'entité Objectif
+POST {{host-url}}//objectif
+Content-Type: application/json
+
+{
+ "scxLibelle": "Maitriser22222222222222 les nombres décimaux",
+  "scxIdActivite": 5
+}
+
+###
+
+PUT {{host-url}}//objectif//3
+Content-Type: application/json
+
+{
+  "scxLibelle": "Maitriser2222 les nombres décimaux",
+  "scxIdActivite": 1
+}
+
+###
+
+DELETE {{host-url}}//objectif//3
+
+###
+
+GET {{host-url}}//objectif//byId//2
+
+###
+
+GET {{host-url}}//objectif//byActivite//1
+
+###
+
+#Test de l'association ternaire
+
+POST {{host-url}}//enseigner
+Content-Type: application/json
+
+{
+ "enseignant": {
+  "scxDateNaissance": "1992-12-16T23:00:00.000+0000",
+  "scxDatePriseService": "2019-09-11T23:00:00.000+0000",
+  "scxDiscipline": "Mathématiques",
+  "scxEmail": "lauredelilia@gmail",
+  "scxIdEnseignant": 3,
+  "scxLieuNaissance": "Bafoussam",
+  "scxNom": "DELILIA",
+  "scxPrenom": "Laure",
+  "scxSexe": "FEMININ",
+  "scxTelephone": 673391176
+},
+  "salleDTO": {
+    "scxDescription": "Deuxième salle de cinquième",
+  "scxIdAnneeAcademique": 1,
+  "scxIdClasse": 1,
+  "scxIdSalle": 3,
+  "scxIdSerie": null,
+  "scxIdSpecialite": null,
+  "scxLibelle": "5M2"
+  },
+  "coursDTO": {
+    "scxCoefficient": 3,
+    "scxDescription": "les bases du secondaire pour faire avancer les jeunes",
+    "scxIdCours": 3,
+    "scxIdMatiere": 1,
+    "scxLibelle": "Mathématiques de cinquième",
+    "scxNature": "OBLIGATOIRE"
+  }
+}
+
+###
+# Test de cycle
+GET {{host-url}}//cycle//all
+
+###
+
+POST {{host-url}}//cycle
+Content-Type: application/json
+
+{
+  "scxIdCycle": 9,
+  "scxLibelle": "six"
+}
+
+###
+PUT {{host-url}}//cycle
+Content-Type: application/json
+
+{
+
+ "scxLibelle": "three"
+}
+
+
+###
